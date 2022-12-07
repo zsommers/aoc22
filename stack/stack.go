@@ -1,4 +1,4 @@
-// Adapted from https://github.com/golang-collections/collections for ints
+// Adapted from https://github.com/golang-collections/collections for generics
 package stack
 
 type (
