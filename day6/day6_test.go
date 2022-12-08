@@ -48,7 +48,7 @@ func TestB(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.input[0], func(t *testing.T) {
 			var result int
-			require.NotPanics(t, func() { result = A(tt.input) })
+			require.NotPanics(t, func() { result = B(tt.input) })
 			assert.Equal(t, tt.want, result)
 		})
 	}
