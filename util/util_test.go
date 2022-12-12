@@ -124,3 +124,60 @@ func TestSumInts(t *testing.T) {
 		})
 	}
 }
+
+func TestHighestInts(t *testing.T) {
+	tests := []struct {
+		vals  []int
+		count int
+		want  []int
+		panic bool
+	}{
+		{
+			vals:  []int{1, 2, 3, 4, 5, 6, 7, 8, 9},
+			count: 1,
+			want:  []int{9},
+		},
+		{
+			vals:  []int{1, 2, 3, 4, 5, 6, 7, 8, 9},
+			count: 2,
+			want:  []int{9, 8},
+		},
+		{
+			vals:  []int{1, 2, 3, 4, 5, 6, 7, 8, 9},
+			count: 5,
+			want:  []int{9, 8, 7, 6, 5},
+		},
+		{
+			vals:  []int{1, 2, 3, 4, 5, 6, 7, 8, 9},
+			count: 9,
+			want:  []int{9, 8, 7, 6, 5, 4, 3, 2, 1},
+		},
+		{
+			vals:  []int{1, 2, 3, 4, 5, 6, 7, 8, 9},
+			count: 0,
+			want:  []int{},
+		},
+		{
+			vals:  []int{1, 2, 3, 4, 5, 6, 7, 8, 9},
+			count: 10,
+			panic: true,
+		},
+		{
+			vals:  []int{1, 2, 3, 4, 5, 6, 7, 8, 9},
+			count: -1,
+			panic: true,
+		},
+	}
+	for ti, tt := range tests {
+		t.Run(fmt.Sprintf("Test %d", ti), func(t *testing.T) {
+			var result []int
+			f := func() { result = HighestInts(tt.count, tt.vals...) }
+			if tt.panic {
+				assert.Panics(t, f)
+			} else {
+				require.NotPanics(t, f)
+				assert.Equal(t, tt.want, result)
+			}
+		})
+	}
+}

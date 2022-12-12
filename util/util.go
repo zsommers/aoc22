@@ -2,6 +2,7 @@ package util
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 	"strings"
@@ -79,4 +80,26 @@ func SumInts(is ...int) int {
 		sum += i
 	}
 	return sum
+}
+
+func HighestInts(count int, vals ...int) []int {
+	if count > len(vals) || count < 0 {
+		panic(fmt.Sprintf("Cannot select %d items from slice of length %d", count, len(vals)))
+	}
+	result := make([]int, count)
+	insert := func(v, index int) {
+		for i := len(result) - 1; i > index; i-- {
+			result[i] = result[i-1]
+		}
+		result[index] = v
+	}
+	for _, v := range vals {
+		for ri := 0; ri < len(result); ri++ {
+			if v > result[ri] {
+				insert(v, ri)
+				break
+			}
+		}
+	}
+	return result
 }
