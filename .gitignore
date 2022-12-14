@@ -16,3 +16,6 @@
 
 # Don't reveal AOC cookie
 session.cookie
+
+# Inputs shouldn't be shared
+**/input.txt

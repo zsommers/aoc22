@@ -17,6 +17,7 @@ import (
 	"github.com/zsommers/aoc22/day10"
 	"github.com/zsommers/aoc22/day11"
 	"github.com/zsommers/aoc22/day12"
+	"github.com/zsommers/aoc22/day13"
 	"github.com/zsommers/aoc22/util"
 )
 
@@ -80,6 +81,10 @@ func main() {
 		result = day12.A(input)
 	case "12b":
 		result = day12.B(input)
+	case "13a":
+		result = day13.A(input)
+	case "13b":
+		result = day13.B(input)
 	default:
 		fmt.Printf("'%s' is not a valid day", flag.Arg(0))
 		os.Exit(1)
