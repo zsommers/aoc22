@@ -25,6 +25,10 @@ func Parse(s string) *Point {
 	return &Point{util.Atoi(parts[0]), util.Atoi(parts[1])}
 }
 
+func (a *Point) ToString() string {
+	return fmt.Sprintf("(%d,%d)", a.X, a.Y)
+}
+
 func (a *Point) Equal(b *Point) bool {
 	return a.X == b.X && a.Y == b.Y
 }
